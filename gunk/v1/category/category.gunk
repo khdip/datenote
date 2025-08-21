@@ -1,0 +1,57 @@
+package category
+
+type Category struct {
+	ID    int64  `pb:"1"`
+	Title string `pb:"2"`
+}
+
+type CreateCategoryRequest struct {
+	Category Category `pb:"1"`
+}
+
+type CreateCategoryResponse struct {
+	ID int64 `pb:"1"`
+}
+
+type GetCategoryRequest struct {
+	ID int64 `pb:"1"`
+}
+
+type GetCategoryResponse struct {
+	Category Category `pb:"1"`
+}
+
+type GetAllCategoriesRequest struct{}
+
+type GetAllCategoriesResponse struct {
+	Categories []Category `pb:"1"`
+}
+
+type UpdateCategoryRequest struct {
+	Category Category `pb:"1"`
+}
+
+type UpdateCategoryResponse struct{}
+
+type DeleteCategoryRequest struct {
+	ID int64 `pb:"1"`
+}
+
+type DeleteCategoryResponse struct{}
+
+type SearchCategoryRequest struct {
+	SearchCategoryQuery string `pb:"1"`
+}
+
+type SearchCategoryResponse struct {
+	SearchCategoryResult []Category `pb:"1"`
+}
+
+type CategoryService interface {
+	CreateCategory(CreateCategoryRequest) CreateCategoryResponse
+	GetCategory(GetCategoryRequest) GetCategoryResponse
+	GetAllCategories(GetAllCategoriesRequest) GetAllCategoriesResponse
+	UpdateCategory(UpdateCategoryRequest) UpdateCategoryResponse
+	DeleteCategory(DeleteCategoryRequest) DeleteCategoryResponse
+	SearchCategory(SearchCategoryRequest) SearchCategoryResponse
+}

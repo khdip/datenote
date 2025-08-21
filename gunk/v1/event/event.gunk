@@ -1,0 +1,60 @@
+package event
+
+type Event struct {
+	ID       int64  `pb:"1"`
+	Name     string `pb:"2"`
+	Date     string `pb:"3"`
+	Info     string `pb:"4"`
+	Category string `pb:"5"`
+}
+
+type CreateEventRequest struct {
+	Event Event `pb:"1"`
+}
+
+type CreateEventResponse struct {
+	ID int64 `pb:"1"`
+}
+
+type GetEventRequest struct {
+	ID int64 `pb:"1"`
+}
+
+type GetEventResponse struct {
+	Event Event `pb:"1"`
+}
+
+type GetAllEventsRequest struct{}
+
+type GetAllEventsResponse struct {
+	Events []Event `pb:"1"`
+}
+
+type UpdateEventRequest struct {
+	Event Event `pb:"1"`
+}
+
+type UpdateEventResponse struct{}
+
+type DeleteEventRequest struct {
+	ID int64 `pb:"1"`
+}
+
+type DeleteEventResponse struct{}
+
+type SearchEventRequest struct {
+	SearchEventQuery string `pb:"1"`
+}
+
+type SearchEventResponse struct {
+	SearchEventResult []Event `pb:"1"`
+}
+
+type EventService interface {
+	CreateEvent(CreateEventRequest) CreateEventResponse
+	GetEvent(GetEventRequest) GetEventResponse
+	GetAllEvents(GetAllEventsRequest) GetAllEventsResponse
+	UpdateEvent(UpdateEventRequest) UpdateEventResponse
+	DeleteEvent(DeleteEventRequest) DeleteEventResponse
+	SearchEvent(SearchEventRequest) SearchEventResponse
+}

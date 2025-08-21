@@ -4,8 +4,8 @@ You can read, craete, edit and delete an event.
 You can also search for an event by the name.  
 gRPC is used to communicate with the services.
 Please change the environment variables of the server and client accordingly in the config file.  
-Find the config file of the server navigate to **todo/env**.  
-Find the config file of the client navigate to **cms/env**.  
+Find the config file of the server in **todo/env**.  
+Find the config file of the client in **cms/env**.  
 To run the DB migration:  
 ```
 cd todo
